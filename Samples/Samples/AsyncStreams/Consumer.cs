@@ -6,16 +6,16 @@ namespace Samples.AsyncStreams
     {
         public async Task<int> CountNamesWithN()
         {
-            var nameContainingN = 0;
+            var namesContainingN = 0;
             await foreach (var name in Producer.GetAllNames())
             {
                 if (name.Contains("n"))
                 {
-                    nameContainingN++;
+                    namesContainingN++;
                 }
             }
 
-            return nameContainingN;
+            return namesContainingN;
         }
     }
 }
