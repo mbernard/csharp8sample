@@ -1,18 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Samples.AsyncStreams
 {
-    class Consumer
+    internal class Consumer
     {
-        public async Task Consume()
+        public async Task<int> CountNamesWithN()
         {
+            var nameContainingN = 0;
             await foreach (var name in Producer.GetAllNames())
             {
-                Console.WriteLine(name);
+                if (name.Contains("n"))
+                {
+                    nameContainingN++;
+                }
             }
+
+            return nameContainingN;
         }
     }
 }
